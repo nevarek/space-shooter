@@ -1,0 +1,81 @@
+[gd_scene load_steps=6 format=3 uid="uid://cq8dogoyajvyp"]
+
+[ext_resource type="Script" path="res://Player.gd" id="1_5j422"]
+[ext_resource type="Texture2D" uid="uid://cs6h5jjd7lw20" path="res://assets/player-med.png" id="2_akeyb"]
+[ext_resource type="Script" path="res://GUICanvasLayer.gd" id="3_e4cnx"]
+[ext_resource type="Texture2D" uid="uid://clp1pkcg1j30r" path="res://assets/health.png" id="4_hjovh"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6qpql"]
+radius = 64.0
+
+[node name="Player" type="CharacterBody2D" groups=["players"]]
+script = ExtResource( "1_5j422" )
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource( "2_akeyb" )
+
+[node name="Modules" type="Node2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( "CircleShape2D_6qpql" )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
+
+[node name="GUICanvasLayer" type="CanvasLayer" parent="."]
+script = ExtResource( "3_e4cnx" )
+
+[node name="Control" type="Control" parent="GUICanvasLayer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="GUICanvasLayer/Control"]
+offset_left = 142.0
+offset_top = 64.0
+offset_right = 284.0
+offset_bottom = 155.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="GUICanvasLayer/Control/HBoxContainer"]
+offset_right = 64.0
+offset_bottom = 91.0
+texture = ExtResource( "4_hjovh" )
+stretch_mode = 5
+
+[node name="HealthLabel" type="Label" parent="GUICanvasLayer/Control/HBoxContainer"]
+offset_left = 68.0
+offset_right = 110.0
+offset_bottom = 91.0
+theme_override_font_sizes/font_size = 64
+text = "--"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="GUICanvasLayer/Control"]
+offset_left = 142.0
+offset_top = 155.0
+offset_right = 284.0
+offset_bottom = 246.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="GUICanvasLayer/Control/HBoxContainer2"]
+offset_bottom = 91.0
+stretch_mode = 5
+
+[node name="ScoreLabel" type="Label" parent="GUICanvasLayer/Control/HBoxContainer2"]
+offset_left = 4.0
+offset_right = 46.0
+offset_bottom = 91.0
+theme_override_font_sizes/font_size = 64
+text = "--"
+__meta__ = {
+"_edit_use_anchors_": false
+}

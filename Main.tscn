@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://c0con3b7o3kfw"]
+
+[ext_resource type="Script" path="res://Main.gd" id="1_61vvb"]
+[ext_resource type="PackedScene" uid="uid://cq8dogoyajvyp" path="res://Player.tscn" id="2_hgiwr"]
+[ext_resource type="Script" path="res://Level.gd" id="3_p5lco"]
+
+[node name="Main" type="Node2D" groups=["MAIN"]]
+script = ExtResource( "1_61vvb" )
+
+[node name="Player" parent="." instance=ExtResource( "2_hgiwr" )]
+collision_layer = 9
+collision_mask = 8
+
+[node name="Level" type="Node2D" parent="."]
+script = ExtResource( "3_p5lco" )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Level"]
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Level/StaticBody2D"]
+build_mode = 1
+
+[node name="Enemies" type="Node2D" parent="."]
+
+[node name="EnemySpawnTimer" type="Timer" parent="."]
